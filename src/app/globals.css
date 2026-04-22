@@ -1,26 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500;1,600&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Cursive font for brand title */
+.font-brand {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+}
+
+@layer base {
+  :root {
+    /* Brand (shared) */
+    --gold-700: #D3AC2C;
+    --gold-600: #B16C04;
+    --champagne-100: #F5E6C8;
+
+    --purple-900: #2B1337;
+    --purple-700: #5A2A82;
+    --purple-500: #7A3EB1;
+
+    /* Light theme (Gold & White) - DEFAULT */
+    --bg: #FFFFFF;
+    --surface-1: #FAFAFA;
+    --surface-2: #F5F5F5;
+    --surface-3: #E5E5E5;
+    --border: #E0D5C0;
+
+    /* Text (light mode) */
+    --text-1: #1A1A1A;
+    --text-2: #4A4A4A;
+    --text-3: #767676;
+
+    /* Semantic tokens */
+    --primary: var(--gold-700);
+    --on-primary: #FFFFFF;
+    --accent: var(--purple-700);
+    --focus: var(--purple-500);
+    --card: var(--surface-1);
+    --muted: var(--surface-2);
+
+    /* Tailwind compatibility */
+    --background: var(--bg);
+    --foreground: var(--text-1);
+  }
+
+  /* Dark theme */
+  .dark {
+    --bg: #121212;
+    --surface-1: #1D1D1F;
+    --surface-2: #212121;
+    --surface-3: #424242;
+    --border: #2A2A2A;
+
+    --text-1: #E5E5E5;
+    --text-2: #B3B3B3;
+    --text-3: #767676;
+
+    --on-primary: #121212;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-border: var(--border);
+  --color-text-1: var(--text-1);
+  --color-text-2: var(--text-2);
+  --color-text-3: var(--text-3);
+  --color-gold-700: var(--gold-700);
+  --color-gold-600: var(--gold-600);
+  --color-champagne-100: var(--champagne-100);
+  --color-purple-900: var(--purple-900);
+  --color-purple-700: var(--purple-700);
+  --color-purple-500: var(--purple-500);
+  --color-on-primary: var(--on-primary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+body {
+  background: var(--bg);
+  color: var(--text-1);
+  font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface-1);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--purple-500);
+}
+
+/* Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
 }

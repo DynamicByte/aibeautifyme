@@ -1,0 +1,407 @@
+{
+  "products": [
+    {
+      "id": "cleansing-foam",
+      "name": "Cleansing Foam",
+      "brand": "Youth Renew",
+      "category": "Cleanser",
+      "price": "₱1,344",
+      "pv": 269,
+      "size": "50 g",
+      "ingredients": ["Rose Water", "Green Tea Extract", "Scidopitys Verticillata Root Extract"],
+      "keyActives": [
+        { "name": "Rose Water", "concentration": "", "benefit": "Maintains skin's pH balance, controls excess oil, strengthens skin cells and regenerates skin tissues" },
+        { "name": "Green Tea Extract", "concentration": "", "benefit": "Reduces wrinkles, age spots, and blemishes; reduces free radical activity" },
+        { "name": "Scidopitys Verticillata Root Extract", "concentration": "", "benefit": "Skin conditioning agent that maintains skin moisture" }
+      ],
+      "usage": {
+        "frequency": "Twice daily, AM and PM",
+        "instructions": "Wet face with water. Apply a small amount on fingertips and mix with little water. Massage on your face in a circular motion. Start from the inner part of your face going outwards.",
+        "tips": "Use lukewarm water for best results. Rinse thoroughly to remove all product."
+      },
+      "bestFor": ["all skin types", "oily skin", "daily cleansing", "pH balance"],
+      "warnings": ["Avoid contact with eyes", "If irritation occurs, discontinue use"],
+      "pairsWith": ["Intense Whitening Toner", "Intense Whitening Cream"],
+      "avoidWith": [],
+      "imageUrl": "/product_images/cleansing_foam.png"
+    },
+    {
+      "id": "intense-whitening-toner",
+      "name": "Intense Whitening Toner",
+      "brand": "Youth Renew",
+      "category": "Toner",
+      "price": "₱1,144",
+      "pv": 229,
+      "size": "100 ml",
+      "ingredients": ["Neofinetia Falcata Callus Extract", "Hyaluronic Acid", "Collagen", "Allantoin"],
+      "keyActives": [
+        { "name": "Neofinetia Falcata Callus Extract", "concentration": "", "benefit": "Gives radiant and brighter skin" },
+        { "name": "Hyaluronic Acid", "concentration": "", "benefit": "Increases skin smoothness, retains skin moisture with anti-aging benefits" },
+        { "name": "Collagen", "concentration": "", "benefit": "Amelioration of wrinkles, benefits tissue repair and protection" },
+        { "name": "Allantoin", "concentration": "", "benefit": "Treats acne problems, leaves skin healthy and smooth" }
+      ],
+      "usage": {
+        "frequency": "Twice daily, AM and PM after cleansing",
+        "instructions": "Put 3 drops in a cotton pad or cotton ball. Apply first under the eye area going outward. Then proceed to the nose bridge making a way upwards then outwards again. Lastly proceed to the chin and make a circular motion outward.",
+        "tips": "Apply to clean, slightly damp skin for better absorption."
+      },
+      "bestFor": ["brightening", "hydration", "acne-prone skin", "anti-aging", "radiant skin"],
+      "warnings": ["For external use only", "Avoid direct contact with eyes"],
+      "pairsWith": ["Cleansing Foam", "Intense Whitening Cream", "Collagen Essence"],
+      "avoidWith": [],
+      "imageUrl": "/product_images/intense_whitening_toner.png"
+    },
+    {
+      "id": "intense-whitening-cream",
+      "name": "Intense Whitening Cream",
+      "brand": "Youth Renew",
+      "category": "Moisturizer",
+      "price": "₱1,108",
+      "pv": 222,
+      "size": "50 g",
+      "ingredients": ["Grape Seed Oil", "Alpha-arbutin", "Jojoba Oil"],
+      "keyActives": [
+        { "name": "Grape Seed Oil", "concentration": "", "benefit": "Moisturizes skin, lightens skin, deals with acne; contains Vitamin C which makes skin look young" },
+        { "name": "Alpha-arbutin", "concentration": "", "benefit": "Extracted from Bearberry; acts as a skin lightening agent; prevents the formation of melanin" },
+        { "name": "Jojoba Oil", "concentration": "", "benefit": "Prevents aging, helps moisturize the skin, increases skin's elasticity, minimizes the appearance of wrinkles and age spots" }
+      ],
+      "usage": {
+        "frequency": "Twice daily, AM and PM",
+        "instructions": "Dab a small amount of the cream to your forehead, nose bridge, chin and under your eyes. Then spread and massage evenly on the face.",
+        "tips": "Apply after toner and essence for best results. Use gentle upward strokes when applying."
+      },
+      "bestFor": ["brightening", "whitening", "moisturizing", "anti-aging", "acne-prone skin", "uneven skin tone"],
+      "warnings": ["For external use only", "Discontinue use if irritation occurs"],
+      "pairsWith": ["Intense Whitening Toner", "Daily Sunblock Whitening Cream", "Collagen Essence"],
+      "avoidWith": [],
+      "imageUrl": "/product_images/intense_whitening_cream.png"
+    },
+    {
+      "id": "daily-sunblock-whitening-cream",
+      "name": "Daily Sunblock Whitening Cream",
+      "brand": "Youth Renew",
+      "category": "Sunscreen",
+      "price": "₱400",
+      "pv": 80,
+      "size": "50 g",
+      "ingredients": ["Camellia Japonica Flower Extract (Dongbaek/RedSnow®)", "Octyl Methoxycinnamate", "Niacinamide (Vitamin B3)", "Aloe Vera Gel Extract"],
+      "keyActives": [
+        { "name": "Camellia Japonica Flower Extract (RedSnow®)", "concentration": "", "benefit": "Anti-aging effects, anti-oxidants, anti-wrinkles, and anti-pollution; ideal for aged, sensitive and dry skin" },
+        { "name": "Octyl Methoxycinnamate", "concentration": "", "benefit": "Primarily used to absorb UV-B rays from the sun, protecting the skin from damage; also used to reduce the appearance of scars" },
+        { "name": "Niacinamide (Vitamin B3)", "concentration": "", "benefit": "Essential nutrient that helps treat certain skin conditions including Acne and Eczema" },
+        { "name": "Aloe Vera Gel Extract", "concentration": "", "benefit": "Helps stimulate immune system to naturally regenerate skin cells; great moisturizer and burn relief; reduces swelling and stops itching" }
+      ],
+      "usage": {
+        "frequency": "Every morning, reapply every 2 hours when exposed to sun",
+        "instructions": "Apply sunblock before going outdoors. Allow 15 minutes for skin to absorb the sunblock for maximum protection. Make sure to use enough sunblock. Rub the sunblock thoroughly into your skin. Make sure to apply on your neck, face, ears, top of your feet and legs.",
+        "tips": "For extended protection, reapply every two hours, or immediately after swimming or sweating."
+      },
+      "bestFor": ["sun protection", "UV protection", "sensitive skin", "dry skin", "anti-aging", "whitening"],
+      "warnings": ["For external use only", "Reapply after water exposure or sweating", "For more health-related information, seek your dermatologist"],
+      "pairsWith": ["Intense Whitening Cream", "All AM routine products"],
+      "avoidWith": [],
+      "imageUrl": "/product_images/daily_sunblock_whitening.png"
+    },
+    {
+      "id": "white-wrinkle-spot-cream",
+      "name": "White & Wrinkle Spot Cream",
+      "brand": "Youth Renew",
+      "category": "Treatment",
+      "price": "₱1,344",
+      "pv": 269,
+      "size": "30 g",
+      "ingredients": ["Niacinamide", "Adenosine", "Multi EX BSASM", "Kerasgen"],
+      "keyActives": [
+        { "name": "Niacinamide", "concentration": "", "benefit": "Strengthens cellular bonds and tightens skin" },
+        { "name": "Adenosine", "concentration": "", "benefit": "Reverses the signs of aging" },
+        { "name": "Multi EX BSASM", "concentration": "", "benefit": "Combination of 7 natural plant extracts: Centella, Tea, Chamomile, Licorice, Rosemary, Skullcap and Japanese knotweed" },
+        { "name": "Kerasgen", "concentration": "", "benefit": "Keeps the skin resilient and healthy; makes the skin firm and tight" }
+      ],
+      "usage": {
+        "frequency": "Twice daily, AM and PM",
+        "instructions": "Dab a small amount of the White & Wrinkle Spot Cream on your forehead, nose bridge, chin and under your eyes. Then spread and massage evenly on the face.",
+        "tips": "Can be used as targeted spot treatment on areas with visible wrinkles or dark spots."
+      },
+      "bestFor": ["anti-aging", "wrinkles", "fine lines", "dark spots", "skin firming", "skin tightening"],
+      "warnings": ["For external use only", "Avoid contact with eyes"],
+      "pairsWith": ["Intense Whitening Toner", "Intense Whitening Cream", "Collagen Essence"],
+      "avoidWith": [],
+      "imageUrl": "/product_images/white_wrinkle_spot_cream.png"
+    },
+    {
+      "id": "bb-cream-whitening",
+      "name": "BB Cream for Whitening",
+      "brand": "Youth Renew",
+      "category": "BB Cream",
+      "price": "₱1,048",
+      "pv": 210,
+      "size": "30 g",
+      "ingredients": [],
+      "keyActives": [],
+      "usage": {
+        "frequency": "Daily, as needed for coverage",
+        "instructions": "Apply evenly to face after skincare routine for natural coverage and whitening benefits.",
+        "tips": "Use as the final step in your AM routine before going out. Provides coverage while treating the skin."
+      },
+      "bestFor": ["coverage", "whitening", "natural makeup look", "daily wear"],
+      "warnings": ["For external use only"],
+      "pairsWith": ["Daily Sunblock Whitening Cream", "Intense Whitening Cream"],
+      "avoidWith": [],
+      "imageUrl": "/product_images/bb_cream_whitening.png"
+    },
+    {
+      "id": "collagen-essence",
+      "name": "Collagen Essence",
+      "brand": "Youth Renew",
+      "category": "Essence",
+      "price": "₱1,000",
+      "pv": 200,
+      "size": "Not specified",
+      "ingredients": ["Collagen"],
+      "keyActives": [
+        { "name": "Collagen", "concentration": "", "benefit": "Improves skin elasticity, reduces appearance of fine lines, promotes youthful skin" }
+      ],
+      "usage": {
+        "frequency": "Twice daily, AM and PM",
+        "instructions": "Apply after toner and before cream. Gently pat onto face until fully absorbed.",
+        "tips": "Use gentle patting motions to help the essence penetrate deeper into the skin."
+      },
+      "bestFor": ["anti-aging", "elasticity", "fine lines", "hydration", "youthful skin"],
+      "warnings": ["For external use only"],
+      "pairsWith": ["Intense Whitening Toner", "Intense Whitening Cream", "White & Wrinkle Spot Cream"],
+      "avoidWith": [],
+      "imageUrl": "/product_images/intense_whitening_cream.png"
+    },
+    {
+      "id": "white-wrinkle-sheet-mask",
+      "name": "White & Wrinkle Sheet Mask",
+      "brand": "Youth Renew",
+      "category": "Sheet Mask",
+      "price": "₱248",
+      "pv": 50,
+      "size": "25 ml",
+      "ingredients": [],
+      "keyActives": [],
+      "usage": {
+        "frequency": "2-3 times per week or as needed",
+        "instructions": "Apply sheet mask to clean face. Leave on for 15-20 minutes. Remove mask and gently pat remaining essence into skin.",
+        "tips": "Use after cleansing and toning for best absorption. Do not rinse after removing mask."
+      },
+      "bestFor": ["whitening", "anti-wrinkle", "intensive treatment", "hydration boost", "special occasions"],
+      "warnings": ["For single use only", "Discontinue if irritation occurs"],
+      "pairsWith": ["Cleansing Foam", "Intense Whitening Toner"],
+      "avoidWith": [],
+      "imageUrl": "/product_images/wrinkle_sheet_mask.png"
+    },
+    {
+      "id": "collagen-glutha-beverage",
+      "name": "Esther Bioscience Collagen+Glutha Beverage Mix",
+      "brand": "Youth Renew",
+      "category": "Beauty Supplement",
+      "price": "₱1,400",
+      "pv": 214,
+      "size": "30 sachets",
+      "ingredients": ["Collagen", "Glutathione"],
+      "keyActives": [
+        { "name": "Collagen", "concentration": "", "benefit": "Supports skin elasticity and firmness from within" },
+        { "name": "Glutathione", "concentration": "", "benefit": "Powerful antioxidant that promotes skin whitening and brightening" }
+      ],
+      "usage": {
+        "frequency": "Daily",
+        "instructions": "Mix with water or your preferred beverage as directed on packaging.",
+        "tips": "Best taken on an empty stomach for optimal absorption. Consistent daily use yields best results."
+      },
+      "bestFor": ["internal beauty", "skin whitening", "collagen support", "antioxidant", "overall skin health"],
+      "warnings": ["Consult a healthcare professional before use if pregnant or nursing", "Keep out of reach of children"],
+      "pairsWith": ["All Youth Renew skincare products"],
+      "avoidWith": [],
+      "imageUrl": "/product_images/esther_bioscience_collagen_gluta.png"
+    },
+    {
+      "id": "dr-chang-cleansing-foam",
+      "name": "Dr. Chang's Mega Peptide Whitening Cleansing Foam",
+      "brand": "Dr. Chang's",
+      "category": "Cleanser",
+      "price": "₱1,099",
+      "pv": 220,
+      "size": "50 ml",
+      "ingredients": ["Dipeptide", "Mineral Oil", "Glycerin", "Flavescens Root Extract", "Hyaluronic Acid", "Tripeptide"],
+      "keyActives": [
+        { "name": "Dipeptide", "concentration": "", "benefit": "Promotes skin renewal and brightening" },
+        { "name": "Hyaluronic Acid", "concentration": "", "benefit": "Replenishes hydration" },
+        { "name": "Tripeptide", "concentration": "", "benefit": "Diminishes fine lines & wrinkles" }
+      ],
+      "usage": {
+        "frequency": "Twice daily, AM and PM",
+        "instructions": "Wet face, apply foam and massage gently. Rinse thoroughly with water.",
+        "tips": "Ultimate solution for a radiant and youthful complexion."
+      },
+      "bestFor": ["brightening", "even skin tone", "fine lines", "wrinkles", "hydration"],
+      "warnings": ["For external use only", "Avoid contact with eyes"],
+      "pairsWith": ["Dr. Chang's Mega Peptide Whitening Serum", "Dr. Chang's Tone Up Sunscreen"],
+      "avoidWith": [],
+      "imageUrl": "/product_images/dr_chang_cleansing_foam.jpg"
+    },
+    {
+      "id": "dr-chang-serum",
+      "name": "Dr. Chang's Mega Peptide Whitening Serum",
+      "brand": "Dr. Chang's",
+      "category": "Serum",
+      "price": "₱1,599",
+      "pv": 320,
+      "size": "50 ml",
+      "ingredients": ["Allantoin", "Adenosine", "Niacinamide", "Panthenol", "Glycerin", "Tripeptide", "Collagen"],
+      "keyActives": [
+        { "name": "Niacinamide", "concentration": "", "benefit": "Brightens skin" },
+        { "name": "Adenosine", "concentration": "", "benefit": "Reduces visible wrinkles" },
+        { "name": "Collagen", "concentration": "", "benefit": "Daily nourishment for skin" },
+        { "name": "Allantoin", "concentration": "", "benefit": "Skin soothing effects" }
+      ],
+      "usage": {
+        "frequency": "Twice daily, AM and PM",
+        "instructions": "Apply after cleansing and toning. Gently pat onto face until absorbed.",
+        "tips": "Age-defying magic that targets aging signs, unveiling a luminous, youthful glow. Shields against pollution and UV rays."
+      },
+      "bestFor": ["anti-aging", "brightening", "wrinkles", "daily nourishment", "skin soothing"],
+      "warnings": ["For external use only"],
+      "pairsWith": ["Dr. Chang's Cleansing Foam", "Dr. Chang's Tone Up Sunscreen"],
+      "avoidWith": [],
+      "imageUrl": "/product_images/dr_chang_serum.jpg"
+    },
+    {
+      "id": "dr-chang-sunscreen",
+      "name": "Dr. Chang's Mega Peptide Whitening Tone Up Sunscreen",
+      "brand": "Dr. Chang's",
+      "category": "Sunscreen",
+      "price": "₱1,299",
+      "pv": 260,
+      "size": "50 ml",
+      "ingredients": ["Dipeptide", "Collagen", "Mineral Oil", "Tripeptide", "Allantoin", "Glycerin"],
+      "keyActives": [
+        { "name": "Collagen", "concentration": "", "benefit": "More elastic skin" },
+        { "name": "Tripeptide", "concentration": "", "benefit": "Natural tone up & brightening effect" },
+        { "name": "SPF 50+ PA+++", "concentration": "", "benefit": "UV protection" }
+      ],
+      "usage": {
+        "frequency": "Every morning as final step",
+        "instructions": "Apply as final step of morning skincare routine. Blend evenly for natural tone up effect.",
+        "tips": "Fusion of sun protection, hydration, peptide, collagen and nourishment. Enhances luminosity and evens skin tone."
+      },
+      "bestFor": ["sun protection", "tone up", "brightening", "elastic skin", "easy blending"],
+      "warnings": ["For external use only", "Reapply every 2 hours when exposed to sun"],
+      "pairsWith": ["Dr. Chang's Cleansing Foam", "Dr. Chang's Serum"],
+      "avoidWith": [],
+      "imageUrl": "/product_images/dr_chang_sunscreen.jpg"
+    },
+    {
+      "id": "lueur-glowchar-detox-bar",
+      "name": "Lueur Glowchar Detox Bar",
+      "brand": "Lueur",
+      "category": "Body Soap",
+      "price": "₱360",
+      "pv": 72,
+      "size": "100 g",
+      "ingredients": ["Niacinamide", "Vitamin C", "Lactic Acid", "Sulfur", "Charcoal"],
+      "keyActives": [
+        { "name": "Niacinamide", "concentration": "", "benefit": "Brightens & refines pores" },
+        { "name": "Vitamin C", "concentration": "", "benefit": "Evens skin tone" },
+        { "name": "Lactic Acid", "concentration": "", "benefit": "Gently exfoliates" },
+        { "name": "Sulfur/Charcoal", "concentration": "", "benefit": "Detoxifies and purifies" }
+      ],
+      "usage": {
+        "frequency": "Daily",
+        "instructions": "Use with premium mesh to create luxurious lather. Apply to wet skin and rinse thoroughly.",
+        "tips": "Sealed for freshness. Deeply cleanses & detoxifies while brightening skin tone."
+      },
+      "bestFor": ["detox", "brightening", "pore refinement", "exfoliation", "moisturizing"],
+      "warnings": ["For external use only"],
+      "pairsWith": ["Lueur Lauren Insta-Magic Whitening Body Lotion"],
+      "avoidWith": [],
+      "imageUrl": ""
+    },
+    {
+      "id": "lueur-insta-magic-lotion",
+      "name": "Lueur Lauren Insta-Magic Whitening Body Lotion SPF 5D",
+      "brand": "Lueur Lauren",
+      "category": "Body Lotion",
+      "price": "₱720",
+      "pv": 144,
+      "size": "120 ml",
+      "ingredients": ["Shea Butter", "Niacinamide", "Argan Oil"],
+      "keyActives": [
+        { "name": "Shea Butter", "concentration": "", "benefit": "Helps relieve the dry condition of the skin" },
+        { "name": "Niacinamide", "concentration": "", "benefit": "Helps the skin to keep firm and healthy" },
+        { "name": "Argan Oil", "concentration": "", "benefit": "It helps to moisturize the skin" }
+      ],
+      "usage": {
+        "frequency": "Daily after bath",
+        "instructions": "Apply generously to body after showering. Massage until fully absorbed.",
+        "tips": "Instant whitening effect with deep moisturization. Non-greasy, fast absorbing formula."
+      },
+      "bestFor": ["instant whitening", "brightening", "moisturizing", "all skin types", "soft smooth skin"],
+      "warnings": ["For external use only", "FDA & HALAL certified"],
+      "pairsWith": ["Lueur Glowchar Detox Bar"],
+      "avoidWith": [],
+      "imageUrl": "/product_images/insta-magic_whitening_lotion.png"
+    },
+    {
+      "id": "milky-glow-pureluxe-bar",
+      "name": "Milky Glow Pureluxe Bar",
+      "brand": "Milky Glow",
+      "category": "Body Soap",
+      "price": "₱360",
+      "pv": 72,
+      "size": "100 g",
+      "ingredients": ["Goats Milk Extract", "Glycerin", "Shea Butter", "Cocoa Butter", "Aloe Vera", "Olive Oil", "Jojoba Oil", "Retinol", "Bakuchiol"],
+      "keyActives": [
+        { "name": "Goats Milk Extract", "concentration": "", "benefit": "Gently exfoliates & nourishes" },
+        { "name": "Glycerin", "concentration": "", "benefit": "Locks in moisture" },
+        { "name": "Shea Butter/Cocoa Butter", "concentration": "", "benefit": "Deep hydration skin repair" },
+        { "name": "Aloe Vera", "concentration": "", "benefit": "Soothes & refreshes" },
+        { "name": "Retinol/Bakuchiol", "concentration": "", "benefit": "Smooths & brightens skin" }
+      ],
+      "usage": {
+        "frequency": "Daily",
+        "instructions": "Use with premium mesh to create creamy lather. Apply to wet skin and rinse.",
+        "tips": "Glow Never Felt This Creamy. Where Luxury Meets Your Glow. Sealed in waterproof zip lock pouch."
+      },
+      "bestFor": ["glow", "hydration", "nourishment", "smooth skin", "brightening"],
+      "warnings": ["For external use only"],
+      "pairsWith": ["Lueur Lauren Insta-Magic Whitening Body Lotion"],
+      "avoidWith": [],
+      "imageUrl": ""
+    },
+    {
+      "id": "liquid-24k-serum",
+      "name": "Liquid 24K Age-Defying Serum",
+      "brand": "Liquid 24K",
+      "category": "Serum",
+      "price": "₱1,000",
+      "pv": 200,
+      "size": "30 ml",
+      "ingredients": ["Niacinamide", "Grape Seed Oil", "Lecithin", "Pure 24K Gold"],
+      "keyActives": [
+        { "name": "Niacinamide", "concentration": "", "benefit": "Helps boost collagen production, helps against sun damage and treats acne" },
+        { "name": "Grape Seed Oil", "concentration": "", "benefit": "Helps to keep hydration of the skin" },
+        { "name": "Lecithin", "concentration": "", "benefit": "Helps stimulate the production of collagen in the skin" },
+        { "name": "Pure 24K Gold", "concentration": "", "benefit": "Radiant, youthful glow" }
+      ],
+      "usage": {
+        "frequency": "Twice daily, AM and PM",
+        "instructions": "Apply a few drops to clean face. Gently massage until absorbed.",
+        "tips": "For all skin types. FDA & HALAL certified."
+      },
+      "bestFor": ["anti-aging", "wrinkles", "fine lines", "firming", "lifting", "hydration", "radiant glow"],
+      "warnings": ["For external use only"],
+      "pairsWith": ["All facial care products"],
+      "avoidWith": [],
+      "imageUrl": "/product_images/age_defying_serum.png"
+    }
+  ],
+  "meta": {
+    "lastUpdated": "2026-02-21",
+    "version": "3.0",
+    "manufacturer": "South Korea Pro You Cosmetics Ltd.",
+    "notes": "K-Beauty technology-driven formulations with focus on whitening, anti-aging, and skin transformation using natural plant extracts and scientifically-backed ingredients."
+  }
+}

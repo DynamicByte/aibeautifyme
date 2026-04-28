@@ -3,6 +3,9 @@
 import { useState, useEffect } from 'react';
 import { useCart, CartItem } from './CartContext';
 import { RoutineStep } from '@/lib/types';
+// @ts-ignore
+import { regions, provinces, cities, barangays } from 'select-philippines-address';
+import { convertProvince, removeParentheses } from '@/lib/mappings';
 
 interface CheckoutModalProps {
   isOpen: boolean;
@@ -17,6 +20,8 @@ interface CheckoutForm {
   address: string;
   city: string;
   province: string;
+  region: String,
+  barangay: String,
   postal_code: string;
   payment_method: string;
 }
@@ -39,13 +44,14 @@ export default function CheckoutModal({ isOpen, onClose, routine }: CheckoutModa
     address: '',
     city: '',
     province: '',
+    region: '',
+    barangay: '',
     postal_code: '',
     payment_method: 'COD',
   });
   const [result, setResult] = useState<CheckoutResult | null>(null);
   const [error, setError] = useState('');
   const [referrerCode, setReferrerCode] = useState<string | null>(null);
-  const [shippingFee, setShippingFee] = useState<number | null>(null);
   const [isCalculatingShipping, setIsCalculatingShipping] = useState(false);
 
   useEffect(() => {
@@ -55,42 +61,136 @@ export default function CheckoutModal({ isOpen, onClose, routine }: CheckoutModa
     }
   }, []);
 
-  // Calculate shipping when city and province are filled
+  // Additional functions //
+  const [regionData, setRegion] = useState<any[]>([]);
+  const [provinceData, setProvince] = useState<any[]>([]);
+  const [cityData, setCity] = useState<any[]>([]);
+  const [barangayData, setBarangay] = useState<any[]>([]);
+
+  const [regionAddr, setRegionAddr] = useState("");
+  const [provinceAddr, setProvinceAddr] = useState("");
+  const [cityAddr, setCityAddr] = useState("");
+  const [barangayAddr, setBarangayAddr] = useState("");
+
+  const [shippingFee, setShippingFee] = useState<number>(110);
+  const [loadingRate, setLoadingRate] = useState<boolean>(false);
+
+  const region = () => {
+    regions().then((response: any[]) => {
+      setRegion(response);
+
+      setRegionAddr("");
+      setProvinceAddr("");
+      setCityAddr("");
+      setBarangayAddr("");
+
+      setForm(prev => ({
+        ...prev,
+        region: "",
+        province: "",
+        city: "",
+        barangay: "",
+      }));
+    });
+  };
+
+  const province = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const text = e.target.selectedOptions[0].text;
+
+    setRegionAddr(text);
+
+    setForm(prev => ({
+      ...prev,
+      region: text,
+    }));
+
+    provinces(e.target.value).then((response: any[]) => {
+      setProvince(response);
+      setCity([]);
+      setBarangay([]);
+
+      setCityAddr("");
+      setBarangayAddr("");
+    });
+  };
+
+  const city = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const text = e.target.selectedOptions[0].text;
+
+    setProvinceAddr(text);
+
+    setForm(prev => ({
+      ...prev,
+      province: text,
+    }));
+
+    cities(e.target.value).then((response: any[]) => {
+      setCity(response);
+      setBarangayAddr("");
+    });
+  };
+
+  const barangay = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const text = e.target.selectedOptions[0].text;
+
+    setCityAddr(text);
+
+    setForm(prev => ({
+      ...prev,
+      city: text,
+    }));
+
+    barangays(e.target.value).then((response: any[]) => {
+      setBarangay(response);
+    });
+  };
+
+  const brgy = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const brgyName = e.target.selectedOptions[0].text;
+
+    setBarangayAddr(brgyName);
+
+    setForm(prev => ({
+      ...prev,
+      barangay: brgyName,
+    }));
+
+    fetchRate({
+      province: convertProvince(provinceAddr),
+      municipality: removeParentheses(cityAddr),
+      barangay: brgyName,
+    });
+  };
+
   useEffect(() => {
-    const calculateShipping = async () => {
-      if (!form.city || !form.province) {
-        setShippingFee(null);
-        return;
-      }
+    region()
+  }, [])
 
-      setIsCalculatingShipping(true);
-      try {
-        const res = await fetch('/api/shipping/calculate', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            province: form.province,
-            city: form.city,
-            weight: 1,
-            declared_value: getTotal(),
-          }),
-        });
-        const data = await res.json();
-        if (data.success) {
-          setShippingFee(data.shipping_fee);
-        } else {
-          setShippingFee(150); // Fallback
-        }
-      } catch {
-        setShippingFee(150); // Fallback on error
-      } finally {
-        setIsCalculatingShipping(false);
-      }
-    };
+  const fetchRate = async (recipient: { province: string; municipality: string; barangay: string; }) => {
+    setLoadingRate(true);
 
-    const debounce = setTimeout(calculateShipping, 500);
-    return () => clearTimeout(debounce);
-  }, [form.city, form.province, getTotal]);
+    try {
+      const res = await fetch("/api/philex/rate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          cartItems: items,
+          recipient,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error);
+
+      setShippingFee(data.rate?.results?.fees?.total_rate);
+    } catch (err) {
+      console.error(err);
+      setShippingFee(100);
+    } finally {
+      setLoadingRate(false);
+    }
+  };
 
   const total = getTotal() + (shippingFee || 0);
 
@@ -101,14 +201,14 @@ export default function CheckoutModal({ isOpen, onClose, routine }: CheckoutModa
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-    
+
     if (!form.name || !form.email || !form.phone || !form.address) {
       setError('Please fill in all required fields');
       return;
     }
 
     if (shippingFee === null) {
-      setError('Please enter city and province to calculate shipping');
+      setError('Please select region, city, province and barangay to calculate shipping');
       return;
     }
 
@@ -163,8 +263,10 @@ export default function CheckoutModal({ isOpen, onClose, routine }: CheckoutModa
         email: '',
         phone: '',
         address: '',
-        city: '',
+        region: '',
         province: '',
+        city: '',
+        barangay: '',
         postal_code: '',
         payment_method: 'COD',
       });
@@ -370,23 +472,73 @@ export default function CheckoutModal({ isOpen, onClose, routine }: CheckoutModa
                     className="w-full px-3 py-2 bg-surface-2 border border-border rounded-lg text-text-1 placeholder-text-3 text-sm focus:outline-none focus:border-purple-500"
                     required
                   />
-                  <div className="grid grid-cols-2 gap-3">
-                    <input
-                      type="text"
-                      name="city"
-                      value={form.city}
-                      onChange={handleChange}
-                      placeholder="City"
-                      className="w-full px-3 py-2 bg-surface-2 border border-border rounded-lg text-text-1 placeholder-text-3 text-sm focus:outline-none focus:border-purple-500"
-                    />
-                    <input
-                      type="text"
-                      name="province"
-                      value={form.province}
-                      onChange={handleChange}
-                      placeholder="Province"
-                      className="w-full px-3 py-2 bg-surface-2 border border-border rounded-lg text-text-1 placeholder-text-3 text-sm focus:outline-none focus:border-purple-500"
-                    />
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-sm font-medium text-text-1 mb-3">Region</label>
+                      <select
+                        name="region"
+                        onChange={province}
+                        defaultValue={""}
+                        className="w-full px-3 py-2 bg-surface-2 border border-border rounded-lg text-text-1 placeholder-text-3 text-sm focus:outline-none focus:border-purple-500">
+                        <option value="" disabled>Select Region</option>
+                        {
+                          regionData && regionData.length > 0 && regionData.map((item) => (
+                            <option
+                              key={item.region_code}
+                              value={item.region_code}>
+                              {item.region_name}
+                            </option>))
+                        }
+                      </select>
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium text-text-1 mb-3">Province</label>
+                      <select
+                        name="province"
+                        onChange={city}
+                        disabled={!regionAddr}
+                        defaultValue={""}
+                        className="w-full px-3 py-2 bg-surface-2 border border-border rounded-lg text-text-1 placeholder-text-3 text-sm focus:outline-none focus:border-purple-500">
+                        <option value="" disabled>Select Province</option>
+                        {
+                          provinceData && provinceData.length > 0 && provinceData.map((item) => (<option
+                            key={item.province_code} value={item.province_code}>{item.province_name}</option>))
+                        }
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="text-sm font-medium text-text-1 mb-3">City</label>
+                      <select
+                        name="city"
+                        onChange={barangay}
+                        disabled={!provinceAddr}
+                        defaultValue={""}
+                        className="w-full px-3 py-2 bg-surface-2 border border-border rounded-lg text-text-1 placeholder-text-3 text-sm focus:outline-none focus:border-purple-500">
+                        <option value="" disabled>Select City</option>
+                        {
+                          cityData && cityData.length > 0 && cityData.map((item) => (<option
+                            key={item.city_code} value={item.city_code}>{item.city_name}</option>))
+                        }
+                      </select>
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium text-text-1 mb-3">Barangay</label>
+                      <select
+                        name="barangay"
+                        onChange={brgy}
+                        disabled={!cityAddr}
+                        defaultValue={""}
+                        className="w-full px-3 py-2 bg-surface-2 border border-border rounded-lg text-text-1 placeholder-text-3 text-sm focus:outline-none focus:border-purple-500">
+                        <option value="" disabled>Select Barangay</option>
+                        {
+                          barangayData && barangayData.length > 0 && barangayData.map((item) => (<option
+                            key={item.brgy_code} value={item.brgy_code}>{item.brgy_name}</option>))
+                        }
+                      </select>
+                    </div>
                   </div>
                   <input
                     type="text"

@@ -11,6 +11,8 @@ export interface Customer {
   phone: string;
   address: string;
   city: string;
+  region: string;
+  barangay: string;
   province: string;
   postal_code: string;
   notes?: string;

@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { supabaseAdmin } from '@/lib/db/supabase'
 import { store } from '@/lib/db/store';
 import { userStore } from '@/lib/db/userStore';
 import { Order, OrderItem, Customer } from '@/lib/db/types';
 import { RoutineStep } from '@/lib/types';
+import { createBooking, createCODBookingFromOrder } from '@/lib/philex'
+import { convertProvince, convertRegion, removeParentheses } from '@/lib/mappings'
 
 interface CheckoutItem {
   product_id: string;
@@ -19,6 +22,8 @@ interface CheckoutRequest {
     phone: string;
     address: string;
     city?: string;
+    barangay?: string;
+    region?: string;
     province?: string;
     postal_code?: string;
     payment_method: string;
@@ -68,6 +73,8 @@ export async function POST(request: NextRequest) {
         phone: customer.phone || '',
         address: customer.address || '',
         city: customer.city || '',
+        region: customer.region || '',
+        barangay: customer.barangay || '',
         province: customer.province || '',
         postal_code: customer.postal_code || '',
         total_orders: 0,
@@ -78,8 +85,10 @@ export async function POST(request: NextRequest) {
     // Create order
     const shippingAddress = [
       customer.address,
+      customer.barangay,
       customer.city,
       customer.province,
+      customer.region,
       customer.postal_code,
     ].filter(Boolean).join(', ');
 
@@ -186,6 +195,46 @@ export async function POST(request: NextRequest) {
         await userStore.updateRoutine(existingUser.id, routine);
       }
     }
+
+    // Create PhilEx booking if serviceable
+    let philexBooking = null
+      try {
+        const bookingRequest = createCODBookingFromOrder({
+          orderId: order.id || '',
+          orderNumber: order.order_number || '',
+          customerName: customer.name,
+          phone: customer.phone,
+          address: customer.address,
+          city: removeParentheses(customer.city ?? ''),
+          province: convertProvince(customer.province ?? ''),
+          barangay: customer.barangay,
+          region: convertRegion(customer.region ?? '').toLowerCase(),
+          total: totalAmount,
+          items: items.map(item => ({ name: item.product_name, quantity: item.quantity })),
+          notes: '',
+        })
+
+        const philexResult = await createBooking(bookingRequest)
+        const booking = philexResult.results.bookings[0]
+
+        philexBooking = {
+          bookingId: philexResult.results.id,
+          trackingNumber: booking?.tracking_number,
+          status: booking?.booking_logs[0]?.status || 'Pending',
+        }
+
+        // Update order with PhilEx tracking info
+        await supabaseAdmin
+          .from('orders')
+          .update({
+            status: 'booked',
+          })
+          .eq('id', order.id)
+      } catch (philexError) {
+        console.error('PhilEx booking failed:', philexError)
+        // Don't fail the order, just log the error
+        // The booking can be created manually later
+      }
 
     return NextResponse.json({
       success: true,

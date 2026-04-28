@@ -24,24 +24,24 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   const pathname = usePathname();
   const [unreadCount, setUnreadCount] = useState(0);
 
-  // Don't show sidebar on login page
-  if (pathname === '/admin/login') {
-    return <>{children}</>;
-  }
-
   useEffect(() => {
     fetch('/api/admin/notifications?unread=true')
       .then(res => res.json())
       .then(data => {
         if (data.success) setUnreadCount(data.unread_count);
       })
-      .catch(() => {});
+      .catch(() => { });
   }, [pathname]);
 
   const isActive = (href: string) => {
     if (href === '/admin') return pathname === '/admin';
     return pathname.startsWith(href);
   };
+
+  // Don't show sidebar on login page
+  if (pathname === '/admin/login') {
+    return <>{children}</>;
+  }
 
   return (
     <div className="min-h-screen bg-background flex">
@@ -67,11 +67,10 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition ${
-                    isActive(item.href)
+                  className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition ${isActive(item.href)
                       ? 'bg-purple-700 text-white'
                       : 'text-text-2 hover:bg-surface-2 hover:text-text-1'
-                  }`}
+                    }`}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                     <path strokeLinecap="round" strokeLinejoin="round" d={item.icon} />

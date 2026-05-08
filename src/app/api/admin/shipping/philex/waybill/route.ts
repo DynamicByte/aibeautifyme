@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { philexApi } from '@/lib/philex';
+import { philexApi } from '@/lib/philex1';
 
 // Get waybill PDF URL for printing
 export async function GET(request: NextRequest) {

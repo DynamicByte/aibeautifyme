@@ -4,7 +4,7 @@ import {
   philexApi,
   PhilExBookingRequest,
   PhilExAddress,
-} from '@/lib/philex';
+} from '@/lib/philex1';
 
 function parseAddress(address: string): { street: string; barangay: string; municipality: string; province: string } {
   const parts = address.split(',').map((p) => p.trim());

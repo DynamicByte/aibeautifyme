@@ -52,7 +52,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, phone, address, city, province, postal_code, notes } = body;
+    const { name, email, phone, address, city, province, barangay, region, postal_code, notes } = body;
 
     if (!name || !email) {
       return NextResponse.json(
@@ -77,6 +77,8 @@ export async function POST(request: NextRequest) {
       address: address || '',
       city: city || '',
       province: province || '',
+      region: region || '',
+      barangay: barangay || '',
       postal_code: postal_code || '',
       notes,
       total_orders: 0,

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { philexApi, PhilExBookingRequest, PhilExAddress } from '@/lib/philex';
+import { philexApi, PhilExBookingRequest, PhilExAddress } from '@/lib/philex1';
 
 // Test endpoint for PhilEx API integration
 // Access via: GET /api/test/philex?test=auth|price|booking_pouch|booking_box|booking_own|all

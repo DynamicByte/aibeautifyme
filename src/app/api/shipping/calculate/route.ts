@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { philexApi, PhilExPriceRequest } from '@/lib/philex';
+import { philexApi, PhilExPriceRequest } from '@/lib/philex1';
 
 // Public API for calculating shipping rates
 export async function POST(request: NextRequest) {
